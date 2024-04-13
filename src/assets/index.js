@@ -1,3 +1,4 @@
-const Bgcloud=require("./Bgcloud")
+import { BgDrops } from "./images/BgDrops";
 
-export default Bgcloud
+
+export { BgDrops };
