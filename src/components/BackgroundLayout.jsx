@@ -8,6 +8,8 @@ import Rainy from "../assets/images/Rainy.jpg";
 import Snow from "../assets/images/snow.jpg";
 import Stormy from "../assets/images/Stormy.jpg";
 import Sunny from "../assets/images/Sunny.jpg";
+
+
 function BackgroundLayout() {
   const { weather } = useStateContext();
   const [image, setImage] = useState(Clear);

@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import {useDate} from '../Utils/useDate.jsx'
 function Login() {
+ console.log(useDate,"useDate in login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

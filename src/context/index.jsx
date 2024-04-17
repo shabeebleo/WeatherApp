@@ -107,6 +107,7 @@ export const StateContextProvider = ({ children }) => {
         setPlace,
         values,
         thisLocation,
+        place
       }}
     >
       {children}
