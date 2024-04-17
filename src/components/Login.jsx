@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {useDate} from '../Utils/useDate.jsx'
+import { useDate } from "../Utils/useDate.jsx";
 function Login() {
- console.log(useDate,"useDate in login");
+  console.log(useDate, "useDate in login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  
+
   function updateLabel() {
     const emailInput = document.getElementById("email");
     const emailLabel = document.querySelector("label[for='email']");
- 
+
     if (emailInput.value.trim() !== "") {
       emailLabel.style.display = "none";
     } else {
@@ -26,26 +27,32 @@ function Login() {
       emailLabel.style.display = "none";
     }
   }
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("reached loginnnn");
     axios
       .post("http://localhost:3001/login", { email, password })
       .then((result) => {
-        console.log(result.data);
+        console.log(result, "result.dataresult.data");
         navigate("/home");
       })
       .catch((error) => {
-        if (error) {
-          console.log(error, "errror");
-          console.error(error.response.data.error);
+        if(error){
+          console.log(error.response.data.error);
+          setError(error.response.data.error);
+        } else {
+          console.error(error);
         }
       });
-
   };
   return (
     <div>
+      {error && (
+        <div className="alert" role="alert">
+          {error}
+        </div>
+      )}
       <div className="bg-gray-900 border border-slate-400 rounded-md bg-opacity-30 relative shadow-xl backdrop-filter backdrop-blur-sm">
         <h1 className="text-4xl font-bold text-center mt-4">Login</h1>
         <form action="post" onSubmit={handleSubmit}>
@@ -59,7 +66,10 @@ function Login() {
               onInput={updateLabel}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="email" className="absolute test-sm duration-300 transform -translate scale-75 top-3 -z-10 origin-[0] peer-focus:text-gray-500 peer-focuse:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:translate-y-6">
+            <label
+              for="email"
+              className="absolute test-sm duration-300 transform -translate scale-75 top-3 -z-10 origin-[0] peer-focus:text-gray-500 peer-focuse:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:translate-y-6"
+            >
               email
             </label>
           </div>
@@ -73,8 +83,10 @@ function Login() {
               onInput={updateLabel}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label for="password"
-             className="absolute test-sm duration-300 transform -translate scale-75 top-3 -z-10 origin-[0] peer-focus:text-gray-600 peer-focuse:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:translate-y-6">
+            <label
+              for="password"
+              className="absolute test-sm duration-300 transform -translate scale-75 top-3 -z-10 origin-[0] peer-focus:text-gray-600 peer-focuse:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:translate-y-6"
+            >
               password
             </label>
           </div>
