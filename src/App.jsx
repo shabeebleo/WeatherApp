@@ -9,7 +9,7 @@ function App() {
   return (
     
     <div
-      className="h-screen flex items-center justify-center bg-cover bg-center      -z-[10]"
+      className="h-screen flex items-center justify-center bg-cover bg-center -z-[10]"
       style={{ backgroundImage: `url(${BgDrops})` }}
     >
       <>
