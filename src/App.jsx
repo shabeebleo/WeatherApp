@@ -1,9 +1,9 @@
-import Login from "./components/Login";
-import Register from "./components/Register";
+// // import Login from "./components/Login";
+// import Register from "./components/Register";
 import { BgDrops } from "./assets/images/BgDrops";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import BackgroundLayout from "./components/BackgroundLayout";
+// import BackgroundLayout from "./components/BackgroundLayout";
 
 function App() {
   return (
@@ -15,10 +15,10 @@ function App() {
       <>
         {/* <BackgroundLayout></BackgroundLayout> */}
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/background" element={<BackgroundLayout />} />
+          {/* <Route path="/" element={<Login />} /> */}
+          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/background" element={<BackgroundLayout />} /> */}
         </Routes>
       </>
     </div>
